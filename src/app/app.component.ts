@@ -16,11 +16,10 @@ export class AppComponent implements OnInit {
   addStock(search: string) {
     this.search = search;
     console.log(search);
-
     this.svc.getStocks().subscribe(data => {
       this.stockData = data;
       //console.log(this.stockData);
-      //console.log(this.stockData.companyName);
+      //console.log(this.stockData.companyName)
     });
   }
 
