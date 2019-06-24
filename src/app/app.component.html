@@ -21,14 +21,15 @@
     </ul>
     <form id="searchform" class="form-inline my-2 my-lg-0">
       <input
+        type="text"
         class="form-control mr-sm-2"
         #box
-        (keyup.esc)="addStock(box.value)"
+        (keydown.enter)="$event.preventDefault()"
       />
       <button
         type="button"
         class="btn btn-outline-success my-2 my-sm-0"
-        (click)="addStock(box.value)"
+        (click)="addStock(box.value); sendValue(box.value); finish()"
       >
         Search
       </button>
@@ -38,25 +39,27 @@
 
 <router-outlet></router-outlet>
 
-<div
-  class="container shadow p-3 mb-5 bg-white rounded text-left"
-  *ngIf="stockData; else noStocks"
->
-  <h3>{{ stockData.companyName }}</h3>
-  {{ stockData.symbol }}
-  {{ stockData.latestPrice | currency }}
-  {{ stockData.iexRealtimePrice }}
-  <br />
-  <br />
-  {{ stockData.high }}
-  {{ stockData.low }}
-  {{ stockData.open }}
-  {{ stockData.close }}
-  <br />
-  <br />
-  <button type="button" class="btn btn-xs btn-primary">
-    <span class="fas fa-plus-circle"></span>Add To Watchlist
-  </button>
+<div class="card mx-auto" style="width:70%" *ngIf="stockData; else noStocks">
+  <div class="card-header stock-banner">
+    {{ stockData.companyName }}
+    <br />
+    <div class="small">({{ stockData.symbol }})</div>
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">{{ stockData.latestPrice | currency }}</h5>
+    <br />
+    <p class="card-text">
+      High: {{ stockData.high | currency }} Open:
+      {{ stockData.open | currency }}
+      <br />
+      Low:{{ stockData.low | currency }} Close: {{ stockData.close | currency }}
+      <br />
+      <br />
+    </p>
+    <a href="#" class="btn btn-primary"
+      ><span class="fas fa-plus-circle"></span> Add to Watchlist</a
+    >
+  </div>
 </div>
 
 <ng-template #noStocks>

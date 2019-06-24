@@ -10,20 +10,28 @@ import { Stock } from "./stock";
 })
 export class AppComponent implements OnInit {
   @Input()
-  public stockData: Stock;
   public search = "";
+
+  public stockData: Stock;
 
   addStock(search: string) {
     this.search = search;
-    console.log(search);
-    this.svc.getStocks().subscribe(data => {
-      this.stockData = data;
-      //console.log(this.stockData);
-      //console.log(this.stockData.companyName)
-    });
+    // console.log(search);
   }
 
   constructor(private svc: APIService) {}
+
+  sendValue() {
+    this.svc.setUrl(this.search);
+  }
+
+  finish() {
+    this.svc.getStocks().subscribe(data => {
+      this.stockData = data;
+      //console.log(this.stockData);
+      //console.log(this.stockData.companyName);
+    });
+  }
 
   ngOnInit() {}
 }

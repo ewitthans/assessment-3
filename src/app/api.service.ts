@@ -7,10 +7,16 @@ import { Stock } from "./stock";
   providedIn: "root"
 })
 export class APIService {
-  private url =
-    // "https://sandbox.iexapis.com/stable/ref-data/symbols?token=Tpk_9ef4a4e9b01d41aaab56e08a429923f8";
-    "https://sandbox.iexapis.com/stable/stock/pdt/quote?token=Tpk_9ef4a4e9b01d41aaab56e08a429923f8";
+  private url: string;
 
+  public setUrl(value: string) {
+    this.url =
+      "https://sandbox.iexapis.com/stable/stock/" +
+      value +
+      "/quote?token=Tpk_9ef4a4e9b01d41aaab56e08a429923f8";
+
+    console.log(this.url);
+  }
   constructor(private http: HttpClient) {}
 
   public getStocks(): Observable<Stock> {
