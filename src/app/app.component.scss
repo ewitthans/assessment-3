@@ -1,0 +1,21 @@
+@import "./src/assets/_theme.scss";
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: $primary-color;
+  color: $primary-text-color;
+}
+
+.base {
+  font-size: $base-font-size;
+}
+.small {
+  font-size: $small-font-size;
+}
+body {
+  background-color: $primary-text-color;
+}

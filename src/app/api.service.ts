@@ -9,7 +9,7 @@ import { Stock } from "./stock";
 export class APIService {
   private url =
     // "https://sandbox.iexapis.com/stable/ref-data/symbols?token=Tpk_9ef4a4e9b01d41aaab56e08a429923f8";
-    "https://sandbox.iexapis.com/stable/stock/L/quote?token=Tpk_9ef4a4e9b01d41aaab56e08a429923f8";
+    "https://sandbox.iexapis.com/stable/stock/pdt/quote?token=Tpk_9ef4a4e9b01d41aaab56e08a429923f8";
 
   constructor(private http: HttpClient) {}
 

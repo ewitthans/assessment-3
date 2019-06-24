@@ -22,13 +22,14 @@
     <form id="searchform" class="form-inline my-2 my-lg-0">
       <input
         class="form-control mr-sm-2"
-        type="search"
-        placeholder="Search"
-        aria-label="Search"
-        id="searchText"
-        name="searchText"
+        #box
+        (keyup.enter)="addStock(box.value)"
       />
-      <button class="btn btn-outline-success my-2 my-sm-0" click="#">
+      <button
+        type="button"
+        class="btn btn-outline-success my-2 my-sm-0"
+        (click)="addStock(box.value)"
+      >
         Search
       </button>
     </form>
@@ -37,10 +38,37 @@
 
 <router-outlet></router-outlet>
 
-<div class="text-center">Add symbol to tracker!</div>
-
-<li *ngIf="stockData">
+<div
+  class="container shadow p-3 mb-5 bg-white rounded text-center"
+  *ngIf="stockData; else noStocks"
+>
+  <h3>{{ stockData.companyName }}</h3>
   {{ stockData.symbol }}
-  {{ stockData.companyName }}
-  {{ stockData.delayedPrice }}
-</li>
+  {{ stockData.latestPrice | currency }}
+  {{ stockData.iexRealtimePrice }}
+  <br />
+  <br />
+  {{ stockData.high }}
+  {{ stockData.low }}
+  {{ stockData.open }}
+  {{ stockData.close }}
+</div>
+
+<ng-template #noStocks>
+  <div class="text-center">Add symbol to tracker!</div>
+</ng-template>
+
+<!-- footer -->
+<footer class="footer">
+  <div class="container d-flex justify-content-between">
+    <div class="text-left">
+      <div class="font-weight-bold base">Ticker Tracker</div>
+      <div class="small">© Copyright 2019</div>
+    </div>
+    <div class="text-right">
+      <div class="font-weight-bold base">University of Arkansas</div>
+      <div class="small">1 University of Arkansas</div>
+      <div class="small">Fayetteville, AR 72704</div>
+    </div>
+  </div>
+</footer>
