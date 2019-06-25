@@ -48,18 +48,23 @@
     <div class="small">({{ stockData.symbol }})</div>
   </div>
   <div class="card-body">
-    <h5 class="card-title">{{ stockData.latestPrice | currency }}</h5>
-    <br />
-    <p class="card-text">
+    <h5 class="card-title">
+      {{ stockData.latestPrice | currency }} <br />
+      <div class="small" id="variable">
+        {{ stockData.change | currency }} ({{
+          stockData.changePercent
+        }})<br />As of {{ date | date }}
+      </div>
+    </h5>
+    <div class="card-text text-center">
       High: {{ stockData.high | currency }} Open:
       {{ stockData.open | currency }}
       <br />
       Low:{{ stockData.low | currency }} Close: {{ stockData.close | currency }}
-      <br />
-      <br />
-    </p>
 
-    <div id="variable">{{ stockData.change | currency }}</div>
+      <br />
+      <br />
+    </div>
 
     <a href="#" class="btn btn-primary"
       ><span class="fas fa-plus-circle"></span> Add to Watchlist</a

@@ -1,6 +1,7 @@
 import { Component, Input, OnInit, ViewEncapsulation } from "@angular/core";
 import { APIService } from "./api.service";
 import { Stock } from "./stock";
+import { DatePipe } from "@angular/common";
 
 declare function colorFunction(): any;
 
@@ -13,6 +14,7 @@ declare function colorFunction(): any;
 export class AppComponent implements OnInit {
   @Input()
   public search = "";
+  public date: Date;
 
   public stockData: Stock;
 
@@ -35,6 +37,7 @@ export class AppComponent implements OnInit {
     });
   }
   colorFunction() {
+    this.date = new Date();
     colorFunction;
   }
 
