@@ -28,3 +28,9 @@ body {
 .small {
   font-size: 12px;
 }
+.positive {
+  color: $increase-color;
+}
+.negative {
+  color: $decrease-color;
+}

@@ -29,7 +29,9 @@
       <button
         type="button"
         class="btn btn-outline-success my-2 my-sm-0"
-        (click)="addStock(box.value); sendValue(box.value); finish()"
+        (click)="
+          addStock(box.value); sendValue(box.value); finish(); colorFunction()
+        "
       >
         Search
       </button>
@@ -56,6 +58,9 @@
       <br />
       <br />
     </p>
+
+    <div id="variable">{{ stockData.change | currency }}</div>
+
     <a href="#" class="btn btn-primary"
       ><span class="fas fa-plus-circle"></span> Add to Watchlist</a
     >

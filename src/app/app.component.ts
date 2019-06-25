@@ -2,6 +2,8 @@ import { Component, Input, OnInit, ViewEncapsulation } from "@angular/core";
 import { APIService } from "./api.service";
 import { Stock } from "./stock";
 
+declare function colorFunction(): any;
+
 @Component({
   selector: "app-root",
   templateUrl: "./app.component.html",
@@ -31,6 +33,9 @@ export class AppComponent implements OnInit {
       //console.log(this.stockData);
       //console.log(this.stockData.companyName);
     });
+  }
+  colorFunction() {
+    colorFunction;
   }
 
   ngOnInit() {}
